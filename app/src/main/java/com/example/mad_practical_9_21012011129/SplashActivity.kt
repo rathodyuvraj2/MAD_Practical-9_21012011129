@@ -11,6 +11,7 @@ import com.example.mad_practical_9_21012011129.R
 import android.widget.ImageView
 
 class SplashActivity : AppCompatActivity(),Animation.AnimationListener {
+    lateinit var imageAnimation : AnimationDrawable
     lateinit var logoimage:ImageView
     lateinit var logoanimation : Animation
 
@@ -23,7 +24,21 @@ class SplashActivity : AppCompatActivity(),Animation.AnimationListener {
         logoanimation.setAnimationListener(this)
     }
 
+    override fun onWindowFocusChanged(hasFocus: Boolean) {
+        if (hasFocus)
+        {
+            logoanimation.start()
+            logoimage.startAnimation(logoanimation)
+        }
+        else
+        {
+            imageAnimation.stop()
+        }
+        super.onWindowFocusChanged(hasFocus)
+    }
+
     override fun onAnimationStart(p0: Animation?) {
+
 
     }
 
