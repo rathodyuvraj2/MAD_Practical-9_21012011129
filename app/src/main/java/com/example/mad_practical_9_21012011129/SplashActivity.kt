@@ -19,6 +19,8 @@ class SplashActivity : AppCompatActivity(),Animation.AnimationListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
         logoimage=findViewById(R.id.uvpce)
+        logoimage.setBackgroundResource(R.drawable.logo_animation_list)
+        imageAnimation = logoimage.background as AnimationDrawable
         logoimage.setBackgroundResource((R.drawable.uvpce_logo))
         logoanimation=AnimationUtils.loadAnimation(this,R.anim.twin_animation)
         logoanimation.setAnimationListener(this)
@@ -27,7 +29,7 @@ class SplashActivity : AppCompatActivity(),Animation.AnimationListener {
     override fun onWindowFocusChanged(hasFocus: Boolean) {
         if (hasFocus)
         {
-            logoanimation.start()
+            imageAnimation.start()
             logoimage.startAnimation(logoanimation)
         }
         else
